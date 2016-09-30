@@ -7,6 +7,7 @@ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules
 
 find_package(SFML REQUIRED)
 find_package(SFGUI REQUIRED)
+find_package(CURL REQUIRED)
 
 include_directories(include)
 
@@ -25,6 +26,11 @@ endif()
 if(SFGUI_FOUND)
 	include_directories(${SFGUI_INCLUDE_DIR})
 	target_link_libraries(${PROJECT_NAME} ${SFGUI_LIBRARIES})
+endif()
+
+if(CURL_FOUND)
+	include_directories(${CURL_INCLUDE_DIR})
+	target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
 
 if(APPLE)
